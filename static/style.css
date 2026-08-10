@@ -1,0 +1,509 @@
+/* ==========================================
+   PASSWORD STRENGTH ANALYZER
+   COLORFUL MODERN UI
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(99, 102, 241, 0.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(236, 72, 153, 0.30),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 90%,
+            rgba(14, 165, 233, 0.30),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #312e81,
+            #581c87
+        );
+
+    color: #1e293b;
+}
+
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    padding: 45px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.25);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+h1 {
+    text-align: center;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4f46e5,
+            #9333ea,
+            #ec4899
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 16px;
+
+    margin-bottom: 40px;
+}
+
+
+/* ==========================================
+   SECTIONS
+========================================== */
+
+.password-section,
+.strength-section,
+.analysis-section,
+.suggestion-section,
+.generator-section {
+
+    margin-bottom: 30px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.07);
+
+    border: 1px solid #e2e8f0;
+}
+
+h2 {
+    font-size: 20px;
+
+    margin-bottom: 18px;
+
+    color: #312e81;
+}
+
+
+/* ==========================================
+   PASSWORD INPUT
+========================================== */
+
+label {
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+    color: #334155;
+}
+
+.password-box {
+    display: flex;
+
+    gap: 10px;
+
+    width: 100%;
+}
+
+.password-box input,
+.generated-password input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 15px 16px;
+
+    border: 2px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.25s;
+
+    background: #f8fafc;
+}
+
+.password-box input:focus,
+.generated-password input:focus {
+
+    border-color: #6366f1;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+button {
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 13px 20px;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #9333ea
+        );
+
+    box-shadow:
+        0 6px 15px rgba(79, 70, 229, 0.25);
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(79, 70, 229, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* SHOW / HIDE */
+
+#togglePassword {
+
+    background:
+        linear-gradient(
+            135deg,
+            #64748b,
+            #475569
+        );
+
+    box-shadow: none;
+}
+
+
+/* ==========================================
+   STRENGTH BAR
+========================================== */
+
+.strength-bar {
+
+    width: 100%;
+
+    height: 18px;
+
+    background: #e2e8f0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 12px;
+}
+
+#strengthProgress {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ef4444,
+            #f59e0b,
+            #22c55e
+        );
+
+    transition:
+        width 0.4s ease,
+        background 0.3s ease;
+}
+
+#strengthText {
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    color: #4f46e5;
+}
+
+
+/* ==========================================
+   PASSWORD ANALYSIS
+========================================== */
+
+.analysis-section ul {
+
+    list-style: none;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.analysis-section li {
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.analysis-section li:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.08);
+}
+
+
+/* ==========================================
+   SUGGESTIONS
+========================================== */
+
+.suggestion-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #faf5ff
+        );
+
+    border: 1px solid #ddd6fe;
+}
+
+.suggestion-section h2 {
+    color: #7c3aed;
+}
+
+#suggestionText {
+
+    color: #475569;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+
+/* ==========================================
+   PASSWORD GENERATOR
+========================================== */
+
+.generator-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ecfeff,
+            #eff6ff
+        );
+
+    border: 1px solid #bae6fd;
+}
+
+.generated-password {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+
+    width: 100%;
+}
+
+.generated-password input {
+
+    font-family: "Courier New", monospace;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: #312e81;
+}
+
+
+/* GENERATE */
+
+#generateButton {
+
+    width: 100%;
+
+    padding: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #06b6d4,
+            #2563eb,
+            #7c3aed
+        );
+}
+
+
+/* COPY */
+
+#copyButton {
+
+    background:
+        linear-gradient(
+            135deg,
+            #10b981,
+            #059669
+        );
+}
+
+
+/* ==========================================
+   SECURITY TIP
+========================================== */
+
+.security-tip {
+
+    margin-top: 10px;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fef3c7,
+            #fff7ed
+        );
+
+    border: 1px solid #fed7aa;
+
+    color: #92400e;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .container {
+        padding: 25px 18px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    .password-box,
+    .generated-password {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .analysis-section ul {
+        grid-template-columns: 1fr;
+    }
+}

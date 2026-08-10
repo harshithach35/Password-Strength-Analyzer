@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Password Strength Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Password Strength Analyzer</h1>
+
+        <p class="subtitle">
+            Check how strong and secure your password is.
+        </p>
+
+
+        <!-- ======================================
+             PASSWORD INPUT
+        ======================================= -->
+
+        <div class="password-section">
+
+            <label for="password">
+                Enter Password
+            </label>
+
+            <div class="password-box">
+
+            <input
+    type="password"
+    id="password"
+    placeholder="Enter your password"
+    autocomplete="off"
+>
+
+                <button
+                    id="togglePassword"
+                    type="button">
+                    Show
+                </button>
+
+            </div>
+
+
+            <!-- PASSWORD HISTORY BUTTON -->
+
+            <button
+                id="checkHistoryButton"
+                type="button">
+
+                Check Password History
+
+            </button>
+
+
+            <!-- HISTORY RESULT -->
+
+            <p id="historyMessage"></p>
+
+        </div>
+
+
+        <!-- ======================================
+             PASSWORD STRENGTH
+        ======================================= -->
+
+        <div class="strength-section">
+
+            <h2>Password Strength</h2>
+
+            <div class="strength-bar">
+
+                <div id="strengthProgress"></div>
+
+            </div>
+
+            <p id="strengthText">
+                Enter a password
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             PASSWORD ANALYSIS
+        ======================================= -->
+
+        <div class="analysis-section">
+
+            <h2>Password Analysis</h2>
+
+            <ul>
+
+                <li id="lengthCheck">
+                    ✗ At least 8 characters
+                </li>
+
+                <li id="uppercaseCheck">
+                    ✗ Contains uppercase letter
+                </li>
+
+                <li id="lowercaseCheck">
+                    ✗ Contains lowercase letter
+                </li>
+
+                <li id="numberCheck">
+                    ✗ Contains a number
+                </li>
+
+                <li id="specialCheck">
+                    ✗ Contains special character
+                </li>
+
+                <li id="commonCheck">
+                    ✗ Avoids common passwords
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ======================================
+             SUGGESTIONS
+        ======================================= -->
+
+        <div class="suggestion-section">
+
+            <h2>Suggestions</h2>
+
+            <p id="suggestionText">
+
+                Enter a password to receive
+                security suggestions.
+
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             PASSWORD GENERATOR
+        ======================================= -->
+
+        <div class="generator-section">
+
+            <h2>Generate Strong Password</h2>
+
+            <div class="generated-password">
+
+                <input
+                    type="text"
+                    id="generatedPassword"
+                    readonly
+                    placeholder="Your generated password"
+                >
+
+                <button
+                    id="copyButton"
+                    type="button">
+
+                    Copy
+
+                </button>
+
+            </div>
+
+
+            <button
+                id="generateButton"
+                type="button">
+
+                Generate Password
+
+            </button>
+
+        </div>
+
+
+        <!-- ======================================
+             SECURITY TIP
+        ======================================= -->
+
+        <div class="security-tip">
+
+            🔐 <strong>Security Tip:</strong>
+
+            Never share your passwords with anyone
+            and avoid using the same password across
+            multiple accounts.
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================
+         JAVASCRIPT
+    ======================================= -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
