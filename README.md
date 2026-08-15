@@ -28,6 +28,5 @@ A simple web application that checks the strength of a password.
 
 python app.py
 
-4. Open this in your browser:
-
-http://127.0.0.1:5000/
+4. Open this in your browser.
+   
